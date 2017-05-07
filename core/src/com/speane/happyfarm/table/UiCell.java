@@ -36,7 +36,9 @@ public class UiCell extends Widget {
         return getWidth() - getHorizontalOffset() * 2;
     }
 
-    private float get
+    private float getInnerAreaHeight() {
+        return getHeight() - getVerticalOffset() * 2;
+    }
 
     private float getHorizontalOffset() {
         return getHeight() * getOffsetRatio();
