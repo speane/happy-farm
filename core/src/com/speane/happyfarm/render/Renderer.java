@@ -3,6 +3,9 @@ package com.speane.happyfarm.render;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.speane.happyfarm.entity.TextureManager;
+import com.speane.happyfarm.table.UiCell;
 import com.speane.happyfarm.table.Widget;
 
 import java.awt.*;
@@ -11,6 +14,8 @@ import java.util.List;
 
 public class Renderer {
 
+    private TextureManager textureManager;
+
     private Batch batch;
 
     private List<Renderable> renderables;
@@ -18,12 +23,18 @@ public class Renderer {
     public Renderer(Batch batch) {
         this.batch = batch;
         renderables = new ArrayList<Renderable>();
+        textureManager = new TextureManager();
     }
 
     public void render(Widget widget) {
-        if (widget.getTexture() != null) {
+        TextureRegion texture = textureManager.getTexture(widget);
+        System.out.println(texture);
+        if (texture != null) {
+            if (widget instanceof UiCell) {
+                System.out.println("draw cell");
+            }
             batch.draw(
-                    widget.getTexture(),
+                    texture,
                     widget.getX(),
                     widget.getY(),
                     widget.getWidth(),

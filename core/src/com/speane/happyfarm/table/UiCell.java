@@ -3,17 +3,12 @@ package com.speane.happyfarm.table;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class UiCell extends Widget {
+public class UiCell extends UiWrapper {
 
     private static final float DEFAULT_WIDTH = 128;
     private static final float DEFAULT_OFFSET = 5;
 
     private UiEntityContainer entityContainer;
-
-    public UiCell() {
-        setTexture(new TextureRegion(new Texture("cell.png")));
-        initEntityContainer();
-    }
 
     @Override
     public float getDefaultWidth() {
@@ -25,30 +20,21 @@ public class UiCell extends Widget {
         return DEFAULT_WIDTH;
     }
 
-    private void initEntityContainer() {
+    @Override
+    protected void init() {
+        setTexture(new TextureRegion(new Texture("cell.png")));
         entityContainer = new UiEntityContainer();
-        entityContainer.setSize(getWidth(), getHeight());
-        appendChild(entityContainer, 0, 0);
-        System.out.println(getX() + " " + getY() + " " + entityContainer.getX() + " " + entityContainer.getY());
+        entityContainer.setSize(getInnerAreaWidth(), getInnerAreaHeight());
+        appendChild(entityContainer, getHorizontalOffset(), getVerticalOffset());
     }
 
-    private float getInnerAreaWidth() {
-        return getWidth() - getHorizontalOffset() * 2;
+    @Override
+    protected float getDefaultHorizontalBorderOffset() {
+        return DEFAULT_OFFSET;
     }
 
-    private float getInnerAreaHeight() {
-        return getHeight() - getVerticalOffset() * 2;
-    }
-
-    private float getHorizontalOffset() {
-        return getHeight() * getOffsetRatio();
-    }
-
-    private float getVerticalOffset() {
-        return getWidth() * getOffsetRatio();
-    }
-
-    private float getOffsetRatio() {
-        return DEFAULT_OFFSET / DEFAULT_WIDTH;
+    @Override
+    protected float getDefaultVerticalBorderOffset() {
+        return DEFAULT_OFFSET;
     }
 }

@@ -2,16 +2,21 @@ package com.speane.happyfarm.screen;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.speane.happyfarm.HappyFarmGame;
 import com.speane.happyfarm.render.Renderer;
-import com.speane.happyfarm.table.UiView;
+import com.speane.happyfarm.table.UiMainScreenView;
 
 public class MainScreen extends ScreenAdapter {
 
     private Renderer renderer;
 
-    public MainScreen() {
+    private HappyFarmGame game;
+
+    public MainScreen(HappyFarmGame game) {
         renderer = new Renderer(new SpriteBatch());
-        renderer.addRenderable(new UiView());
+        UiMainScreenView view = new UiMainScreenView();
+        view.setContainers(game.getContainers());
+        renderer.addRenderable(view);
     }
 
     @Override

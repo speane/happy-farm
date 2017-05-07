@@ -19,6 +19,7 @@ public abstract class Widget implements Renderable {
     public Widget() {
         childWidgets = new ArrayList<Widget>();
         setSize(getDefaultWidth(), getDefaultHeight());
+        init();
     }
 
     public List<Widget> getChildWidgets() {
@@ -96,9 +97,6 @@ public abstract class Widget implements Renderable {
         this.texture = texture;
     }
 
-    public abstract float getDefaultWidth();
-    public abstract float getDefaultHeight();
-
     @Override
     public void render(Renderer renderer) {
         renderer.render(this);
@@ -135,4 +133,10 @@ public abstract class Widget implements Renderable {
     public boolean isTouched(double x, double y) {
         return x >= this.x && x <= this.x + width && y >= this.y && y <= this.y + height;
     }
+
+    protected abstract float getDefaultWidth();
+
+    protected abstract float getDefaultHeight();
+
+    protected abstract void init();
 }
