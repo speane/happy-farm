@@ -1,13 +1,12 @@
 package com.speane.happyfarm.table;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.speane.happyfarm.entity.Container;
 
 public class UiGrid extends UiWrapper {
 
     private static final float DEFAULT_WIDTH = 384;
     private static final float DEFAULT_BORDER_OFFSET = 5;
+    private static final String DEFAULT_TEXTURE_NAME = "table";
 
     private Container[][] containers;
 
@@ -15,6 +14,15 @@ public class UiGrid extends UiWrapper {
 
     private int rowCount;
     private int columnCount;
+
+    public void setContainers(Container[][] containers) {
+        if (containersAreCorrect(containers)) {
+            this.containers = containers;
+            rowCount = containers.length;
+            columnCount = containers[0].length;
+            initCells();
+        }
+    }
 
     @Override
     public float getDefaultWidth() {
@@ -26,21 +34,13 @@ public class UiGrid extends UiWrapper {
         return DEFAULT_WIDTH;
     }
 
-    public void setContainers(Container[][] containers) {
-        System.out.println("set");
-        if (containersAreCorrect(containers)) {
-            System.out.println("Correct");
-            this.containers = containers;
-            rowCount = containers.length;
-            columnCount = containers[0].length;
-            initCells();
-        }
+    @Override
+    protected String getDefaultTextureName() {
+        return DEFAULT_TEXTURE_NAME;
     }
 
     @Override
     protected void init() {
-        System.out.println("INIT");
-        setTexture(new TextureRegion(new Texture("table.png")));
         initCells();
     }
 
@@ -56,10 +56,11 @@ public class UiGrid extends UiWrapper {
 
     private void initCells() {
         cells = new UiCell[rowCount][columnCount];
-        System.out.println(rowCount + " " + columnCount);
         for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < columnCount; j++) {
                 UiCell cell = new UiCell();
+                cell.setVisible(true);
+                cell.setTouchable(true);
                 cell.setSize(
                         getInnerAreaWidth() / columnCount,
                         getInnerAreaHeight() / rowCount);
@@ -67,6 +68,7 @@ public class UiGrid extends UiWrapper {
                         cell,
                         getHorizontalOffset() + getInnerAreaWidth() / columnCount * j,
                         getVerticalOffset() + getInnerAreaHeight() / rowCount * i);
+                cell.setContainer(containers[i][j]);
                 cells[i][j] = cell;
             }
         }

@@ -1,5 +1,6 @@
 package com.speane.happyfarm.screen;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.speane.happyfarm.HappyFarmGame;
@@ -13,14 +14,17 @@ public class MainScreen extends ScreenAdapter {
     private HappyFarmGame game;
 
     public MainScreen(HappyFarmGame game) {
+        this.game = game;
         renderer = new Renderer(new SpriteBatch());
         UiMainScreenView view = new UiMainScreenView();
         view.setContainers(game.getContainers());
         renderer.addRenderable(view);
+        Gdx.input.setInputProcessor(view);
     }
 
     @Override
     public void render(float delta) {
+        game.update(delta);
         renderer.render();
     }
 }

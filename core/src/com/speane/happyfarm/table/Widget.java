@@ -1,6 +1,7 @@
 package com.speane.happyfarm.table;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.speane.happyfarm.entity.TextureRepository;
 import com.speane.happyfarm.render.Renderable;
 import com.speane.happyfarm.render.Renderer;
 
@@ -15,10 +16,15 @@ public abstract class Widget implements Renderable {
     private float width;
     private float height;
     private TextureRegion texture;
+    private boolean touchable;
+    private boolean visible;
+    private Widget parent;
+    private TouchHandler touchHandler;
 
     public Widget() {
         childWidgets = new ArrayList<Widget>();
         setSize(getDefaultWidth(), getDefaultHeight());
+        setTexture(getDefaultTextureName());
         init();
     }
 
@@ -60,6 +66,9 @@ public abstract class Widget implements Renderable {
     }
 
     public void setSize(float width, float height) {
+        if (this instanceof UiProgressBarInner) {
+            System.out.println("INSIDE SET: " + width + " " + height);
+        }
         for (Widget child : childWidgets) {
             child.setPosition(
                     child.getX() / this.width * width,
@@ -78,6 +87,9 @@ public abstract class Widget implements Renderable {
     }
 
     public void setWidth(float width) {
+        if (this.getClass().equals(UiProgressBarInner.class)) {
+
+        }
         this.width = width;
     }
 
@@ -93,8 +105,32 @@ public abstract class Widget implements Renderable {
         return texture;
     }
 
-    public void setTexture(TextureRegion texture) {
-        this.texture = texture;
+    public void setTexture(String name) {
+        texture = TextureRepository.getTextureByName(name);
+    }
+
+    public boolean isTouchable() {
+        return touchable && (parent == null || parent.isTouchable());
+    }
+
+    public void setTouchable(boolean touchable) {
+        this.touchable = touchable;
+    }
+
+    public boolean isVisible() {
+        return visible && (parent == null || parent.isVisible());
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
+    public Widget getParent() {
+        return parent;
+    }
+
+    public void setParent(Widget parent) {
+        this.parent = parent;
     }
 
     @Override
@@ -108,6 +144,7 @@ public abstract class Widget implements Renderable {
     public void appendChild(Widget child, float relativeX, float relativeY) {
         child.setX(x + relativeX);
         child.setY(y + relativeY);
+        child.setParent(this);
         childWidgets.add(child);
     }
 
@@ -115,15 +152,25 @@ public abstract class Widget implements Renderable {
         childWidgets.remove(widget);
     }
 
-    public Widget getTouched(Class clazz, double x, double y) {
+    public void onTouched() {
+        if (touchHandler != null) {
+            touchHandler.onTouch(this);
+        }
+    }
+
+    public void setTouchHandler(TouchHandler touchHandler) {
+        this.touchHandler = touchHandler;
+    }
+
+    public Widget getTouched(double x, double y) {
         for (Widget child : childWidgets) {
-            Widget widget = child.getTouched(clazz, x, y);
+            Widget widget = child.getTouched(x, y);
             if (widget != null) {
                 return widget;
             }
         }
 
-        if (isTouched(x, y) && clazz.isInstance(this)) {
+        if (isTouchable() && isTouched(x, y)) {
             return this;
         } else {
             return null;
@@ -134,9 +181,12 @@ public abstract class Widget implements Renderable {
         return x >= this.x && x <= this.x + width && y >= this.y && y <= this.y + height;
     }
 
+    protected void init() {
+    }
+
     protected abstract float getDefaultWidth();
 
     protected abstract float getDefaultHeight();
 
-    protected abstract void init();
+    protected abstract String getDefaultTextureName();
 }

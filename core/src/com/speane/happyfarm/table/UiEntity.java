@@ -1,40 +1,47 @@
 package com.speane.happyfarm.table;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.speane.happyfarm.entity.Entity;
-import com.speane.happyfarm.entity.Plant;
 
 public class UiEntity extends Widget {
 
     private static final float DEFAULT_WIDTH = 128;
-
-    private TextureRegion firstTexture = new TextureRegion(new Texture("test1.png"));
-    private TextureRegion secondTexture = new TextureRegion(new Texture("test2.png"));
-    private TextureRegion thirdTexture = new TextureRegion(new Texture("test3.png"));
+    private static final String DEFAULT_TEXTURE_NAME = "entity";
 
     private Entity entity;
 
+    private UiProgressBar progressBar;
+    private static final float PROGRESS_BAR_X = 14;
+    private static final float PROGRESS_BAR_Y = 14;
+    private static final float PROGRESS_BAR_WIDTH = 100;
+    private static final float PROGRESS_BAR_HEIGHT = 20;
+
     public Entity getEntity() {
-        final Entity entity = new Plant();
         return entity;
     }
 
     public void setEntity(Entity entity) {
         this.entity = entity;
+        progressBar.setProgressObserver(new ProgressObserver<Entity>(entity) {
+            @Override
+            public float getObservedProgress() {
+                if (getEntity() != null) {
+                    return getEntity().getAge() / getEntity().getMaxAge();
+                } else {
+                    return 0;
+                }
+            }
+        });
     }
 
     @Override
-    public TextureRegion getTexture() {
-        if (entity != null) {
-            if (entity.age > 2) {
-                return thirdTexture;
-            } else if (entity.age > 1) {
-                return secondTexture;
-            }
-        }
+    protected void init() {
+        progressBar = new UiProgressBar();
+        progressBar.setSize(PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT);
+        progressBar.setVisible(true);
+        System.out.println(entity);
 
-        return firstTexture;
+
+        appendChild(progressBar, PROGRESS_BAR_X, PROGRESS_BAR_Y);
     }
 
     @Override
@@ -48,7 +55,7 @@ public class UiEntity extends Widget {
     }
 
     @Override
-    protected void init() {
-        setTexture(new TextureRegion(new Texture("entity.png")));
+    protected String getDefaultTextureName() {
+        return DEFAULT_TEXTURE_NAME;
     }
 }

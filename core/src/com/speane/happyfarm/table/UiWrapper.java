@@ -15,7 +15,7 @@ public abstract class UiWrapper extends Widget {
     }
 
     protected float getVerticalOffset() {
-        return getHorizontalOffsetRatio() * getHeight();
+        return getVerticalOffsetRatio() * getHeight();
     }
 
     protected float getHorizontalOffsetRatio() {

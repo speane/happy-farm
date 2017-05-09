@@ -1,14 +1,18 @@
 package com.speane.happyfarm.table;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.speane.happyfarm.entity.Container;
 
 public class UiCell extends UiWrapper {
 
     private static final float DEFAULT_WIDTH = 128;
     private static final float DEFAULT_OFFSET = 5;
+    private static final String DEFAULT_TEXTURE_NAME = "cell";
 
     private UiEntityContainer entityContainer;
+
+    public void setContainer(Container container) {
+        entityContainer.setContainer(container);
+    }
 
     @Override
     public float getDefaultWidth() {
@@ -21,11 +25,13 @@ public class UiCell extends UiWrapper {
     }
 
     @Override
+    protected String getDefaultTextureName() {
+        return DEFAULT_TEXTURE_NAME;
+    }
+
+    @Override
     protected void init() {
-        setTexture(new TextureRegion(new Texture("cell.png")));
-        entityContainer = new UiEntityContainer();
-        entityContainer.setSize(getInnerAreaWidth(), getInnerAreaHeight());
-        appendChild(entityContainer, getHorizontalOffset(), getVerticalOffset());
+        initUi();
     }
 
     @Override
@@ -36,5 +42,17 @@ public class UiCell extends UiWrapper {
     @Override
     protected float getDefaultVerticalBorderOffset() {
         return DEFAULT_OFFSET;
+    }
+
+    private void initUi() {
+        initEntityContainer();
+    }
+
+    private void initEntityContainer() {
+        entityContainer = new UiEntityContainer();
+        entityContainer.setSize(getInnerAreaWidth(), getInnerAreaHeight());
+        entityContainer.setVisible(true);
+        entityContainer.setTouchable(false);
+        appendChild(entityContainer, getHorizontalOffset(), getVerticalOffset());
     }
 }
