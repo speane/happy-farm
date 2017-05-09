@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.speane.happyfarm.entity.TextureNameRepository;
 import com.speane.happyfarm.entity.TextureRepository;
+import com.speane.happyfarm.table.UiLabel;
 import com.speane.happyfarm.table.UiProgressBarInner;
 import com.speane.happyfarm.table.Widget;
 
@@ -36,9 +37,10 @@ public class Renderer {
     }
 
     public void render(Widget widget) {
-        System.out.println("render " + widget.getClass());
+        if (widget instanceof UiLabel) {
+        }
         if (canBeDrawn(widget)) {
-            getDrawHandler(widget).draw(batch, widget);
+            getDrawHandler(widget.getClass()).draw(batch, widget);
         }
     }
 
@@ -57,28 +59,30 @@ public class Renderer {
         batch.end();
     }
 
-    private boolean hasDrawHandler(Widget widget) {
-        return drawHandlers.containsKey(widget.getClass());
+    private boolean hasDrawHandler(Class clazz) {
+        return drawHandlers.containsKey(clazz);
     }
 
     private DrawHandler getDefaultDrawHandler() {
         return defaultDrawHandler;
     }
 
-    private DrawHandler getDrawHandlerForWidget(Widget widget) {
-        return drawHandlers.get(widget.getClass());
+    private DrawHandler getDrawHandlerForClass(Class clazz) {
+        return drawHandlers.get(clazz);
     }
 
-    private DrawHandler getDrawHandler(Widget widget) {
-        if (hasDrawHandler(widget)) {
-            return getDrawHandlerForWidget(widget);
+    private DrawHandler getDrawHandler(Class clazz) {
+        if (hasDrawHandler(clazz)) {
+            return getDrawHandlerForClass(clazz);
+        } else if (!clazz.equals(Widget.class)){
+            return getDrawHandler(clazz.getSuperclass());
         } else {
             return getDefaultDrawHandler();
         }
     }
 
     private boolean canBeDrawn(Widget widget) {
-        return widget != null && widget.isVisible() && widget.getTexture() != null;
+        return widget != null && widget.isVisible();
     }
 
     private void clearScreen() {
@@ -103,6 +107,7 @@ public class Renderer {
     private void initDrawHandlers() {
         drawHandlers = new HashMap<Class<? extends Widget>, DrawHandler>();
         drawHandlers.put(UiProgressBarInner.class, new ProgressBarDrawHandler());
+        drawHandlers.put(UiLabel.class, new LabelDrawHandler());
     }
 
     private void initTextureNameRepository() {

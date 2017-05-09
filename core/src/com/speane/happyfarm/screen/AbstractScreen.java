@@ -1,8 +1,10 @@
 package com.speane.happyfarm.screen;
 
 import com.badlogic.gdx.ScreenAdapter;
+import com.speane.happyfarm.table.GameStateListener;
 
-public abstract class AbstractScreen<V extends AbstractView, G extends AbstractGame> extends ScreenAdapter {
+public abstract class AbstractScreen<V extends AbstractView, G extends AbstractGame> extends ScreenAdapter
+        implements GameStateListener {
 
     private V view;
     private G game;
@@ -27,6 +29,10 @@ public abstract class AbstractScreen<V extends AbstractView, G extends AbstractG
         }
     }
 
+    protected void subscribeOnGameState() {
+        getGame().addGameStateListener(this);
+    }
+
     public V getView() {
         return view;
     }
@@ -41,5 +47,6 @@ public abstract class AbstractScreen<V extends AbstractView, G extends AbstractG
 
     public void setGame(G game) {
         this.game = game;
+        subscribeOnGameState();
     }
 }

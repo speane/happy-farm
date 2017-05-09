@@ -11,6 +11,13 @@ badlogic
   orig: 256, 256
   offset: 0, 0
   index: -1
+button
+  rotate: false
+  xy: 1102, 1218
+  size: 200, 40
+  orig: 200, 40
+  offset: 0, 0
+  index: -1
 cell
   rotate: false
   xy: 2, 4
@@ -32,9 +39,16 @@ container
   orig: 256, 256
   offset: 0, 0
   index: -1
-entity
+create_menu_item
   rotate: false
   xy: 1102, 1390
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+entity
+  rotate: false
+  xy: 1360, 1390
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
@@ -48,16 +62,23 @@ main_title
   index: -1
 progress_bar
   rotate: false
-  xy: 844, 1348
+  xy: 1102, 1176
   size: 200, 40
   orig: 200, 40
   offset: 0, 0
   index: -1
 progress_bar_wrapper
   rotate: false
-  xy: 1686, 1710
+  xy: 1102, 1134
   size: 200, 40
   orig: 200, 40
+  offset: 0, 0
+  index: -1
+remove_menu_item
+  rotate: false
+  xy: 516, 260
+  size: 256, 256
+  orig: 256, 256
   offset: 0, 0
   index: -1
 table
@@ -69,49 +90,49 @@ table
   index: -1
 test1
   rotate: false
-  xy: 1360, 1390
+  xy: 516, 2
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 test2
   rotate: false
-  xy: 516, 260
+  xy: 1686, 1494
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 test3
   rotate: false
-  xy: 516, 2
+  xy: 844, 1132
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 test4
   rotate: false
-  xy: 772, 1158
+  xy: 1102, 1260
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 test5
   rotate: false
-  xy: 772, 1028
+  xy: 1232, 1260
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 test_black
   rotate: false
-  xy: 772, 898
+  xy: 1362, 1260
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 test_white
   rotate: false
-  xy: 772, 898
+  xy: 1362, 1260
   size: 128, 128
   orig: 128, 128
   offset: 0, 0

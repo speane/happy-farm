@@ -1,6 +1,7 @@
 package com.speane.happyfarm.table;
 
 import com.speane.happyfarm.entity.Container;
+import com.speane.happyfarm.entity.Entity;
 
 public class UiEntityContainer extends UiWrapper {
     
@@ -8,7 +9,7 @@ public class UiEntityContainer extends UiWrapper {
     private static final float DEFAULT_OFFSET = 5;
     private static final String DEFAULT_TEXTURE_NAME = "container";
 
-    private UiEntity entity;
+    private UiEntity uiEntity;
 
     private Container container;
 
@@ -18,13 +19,11 @@ public class UiEntityContainer extends UiWrapper {
 
     public void setContainer(Container container) {
         this.container = container;
-        entity.setVisible(container.getEntity() != null);
-        entity.setEntity(container.getEntity() != null ? entity.getEntity() : null);
-    }
 
-    @Override
-    protected void init() {
-        initEntity();
+        removeEntity();
+        if (container != null && container.getEntity() != null) {
+            createEntity(container.getEntity());
+        }
     }
 
     @Override
@@ -52,10 +51,35 @@ public class UiEntityContainer extends UiWrapper {
         return DEFAULT_OFFSET;
     }
 
-    private void initEntity() {
-        entity = new UiEntity();
-        entity.setSize(getInnerAreaWidth(), getInnerAreaHeight());
-        entity.setVisible(true);
-        appendChild(entity, getHorizontalOffset(), getVerticalOffset());
+    private void removeEntity() {
+        if (uiEntity != null) {
+            removeChild(uiEntity);
+        }
+    }
+
+    private void createEntity(Entity entity) {
+        uiEntity = new UiEntity();
+        uiEntity.setSize(getInnerAreaWidth(), getInnerAreaHeight());
+        uiEntity.setVisible(true);
+        uiEntity.setEntity(entity);
+        appendChild(uiEntity, getHorizontalOffset(), getVerticalOffset());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UiEntityContainer that = (UiEntityContainer) o;
+
+        if (uiEntity != null ? !uiEntity.equals(that.uiEntity) : that.uiEntity != null) return false;
+        return container != null ? container.equals(that.container) : that.container == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = uiEntity != null ? uiEntity.hashCode() : 0;
+        result = 31 * result + (container != null ? container.hashCode() : 0);
+        return result;
     }
 }

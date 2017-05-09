@@ -51,7 +51,6 @@ public class UiProgressBar extends UiWrapper {
     private void initProgressBarInner() {
         progressBarInner = new UiProgressBarInner();
         progressBarInner.setSize(getInnerAreaWidth(), getInnerAreaHeight());
-        System.out.println(getInnerAreaHeight());
 
         progressBarInner.setVisible(true);
         appendChild(progressBarInner, getHorizontalOffset(), getVerticalOffset());

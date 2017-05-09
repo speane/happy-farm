@@ -1,5 +1,6 @@
 package com.speane.happyfarm.table;
 
+import com.speane.happyfarm.entity.Cell;
 import com.speane.happyfarm.entity.Container;
 
 public class UiCell extends UiWrapper {
@@ -10,8 +11,17 @@ public class UiCell extends UiWrapper {
 
     private UiEntityContainer entityContainer;
 
-    public void setContainer(Container container) {
-        entityContainer.setContainer(container);
+    private Cell cell;
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+        if (cell != null && cell.getContainer() != null) {
+            initEntityContainer(cell.getContainer());
+        }
+    }
+
+    public Cell getCell() {
+        return cell;
     }
 
     @Override
@@ -30,11 +40,6 @@ public class UiCell extends UiWrapper {
     }
 
     @Override
-    protected void init() {
-        initUi();
-    }
-
-    @Override
     protected float getDefaultHorizontalBorderOffset() {
         return DEFAULT_OFFSET;
     }
@@ -44,15 +49,12 @@ public class UiCell extends UiWrapper {
         return DEFAULT_OFFSET;
     }
 
-    private void initUi() {
-        initEntityContainer();
-    }
-
-    private void initEntityContainer() {
+    private void initEntityContainer(Container container) {
         entityContainer = new UiEntityContainer();
         entityContainer.setSize(getInnerAreaWidth(), getInnerAreaHeight());
         entityContainer.setVisible(true);
         entityContainer.setTouchable(false);
+        entityContainer.setContainer(container);
         appendChild(entityContainer, getHorizontalOffset(), getVerticalOffset());
     }
 }

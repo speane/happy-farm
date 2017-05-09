@@ -1,6 +1,6 @@
 package com.speane.happyfarm.table;
 
-import com.speane.happyfarm.entity.Container;
+import com.speane.happyfarm.entity.Cell;
 
 public class UiGrid extends UiWrapper {
 
@@ -8,18 +8,28 @@ public class UiGrid extends UiWrapper {
     private static final float DEFAULT_BORDER_OFFSET = 5;
     private static final String DEFAULT_TEXTURE_NAME = "table";
 
-    private Container[][] containers;
+    private Cell[][] cells;
 
-    private UiCell[][] cells;
+    private UiCell[][] uiCells;
+    private TouchHandler<UiCell> cellTouchHandler;
 
     private int rowCount;
     private int columnCount;
 
-    public void setContainers(Container[][] containers) {
-        if (containersAreCorrect(containers)) {
-            this.containers = containers;
-            rowCount = containers.length;
-            columnCount = containers[0].length;
+    public void setCellTouchHandler(TouchHandler<UiCell> touchHandler) {
+        this.cellTouchHandler = touchHandler;
+        for (UiCell[] row : uiCells) {
+            for (UiCell cell : row) {
+                cell.setTouchHandler(touchHandler);
+            }
+        }
+    }
+
+    public void setCells(Cell[][] cells) {
+        if (checkCells(cells)) {
+            this.cells = cells;
+            rowCount = cells.length;
+            columnCount = cells[0].length;
             initCells();
         }
     }
@@ -55,7 +65,8 @@ public class UiGrid extends UiWrapper {
     }
 
     private void initCells() {
-        cells = new UiCell[rowCount][columnCount];
+        getChildWidgets().clear();
+        uiCells = new UiCell[rowCount][columnCount];
         for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < columnCount; j++) {
                 UiCell cell = new UiCell();
@@ -68,13 +79,15 @@ public class UiGrid extends UiWrapper {
                         cell,
                         getHorizontalOffset() + getInnerAreaWidth() / columnCount * j,
                         getVerticalOffset() + getInnerAreaHeight() / rowCount * i);
-                cell.setContainer(containers[i][j]);
-                cells[i][j] = cell;
+                cell.setCell(cells[i][j]);
+                uiCells[i][j] = cell;
             }
         }
+
+        setCellTouchHandler(cellTouchHandler);
     }
 
-    private boolean containersAreCorrect(Container[][] containers) {
-        return containers != null && containers.length > 0 && containers[0] != null && containers[0].length > 0;
+    private boolean checkCells(Cell[][] cells) {
+        return cells != null && cells.length > 0 && cells[0].length > 0;
     }
 }

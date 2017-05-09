@@ -66,9 +66,6 @@ public abstract class Widget implements Renderable {
     }
 
     public void setSize(float width, float height) {
-        if (this instanceof UiProgressBarInner) {
-            System.out.println("INSIDE SET: " + width + " " + height);
-        }
         for (Widget child : childWidgets) {
             child.setPosition(
                     child.getX() / this.width * width,

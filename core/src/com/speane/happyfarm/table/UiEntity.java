@@ -38,8 +38,6 @@ public class UiEntity extends Widget {
         progressBar = new UiProgressBar();
         progressBar.setSize(PROGRESS_BAR_WIDTH, PROGRESS_BAR_HEIGHT);
         progressBar.setVisible(true);
-        System.out.println(entity);
-
 
         appendChild(progressBar, PROGRESS_BAR_X, PROGRESS_BAR_Y);
     }
