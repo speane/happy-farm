@@ -3,7 +3,10 @@ package com.speane.happyfarm.table;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.speane.happyfarm.entity.Cell;
 import com.speane.happyfarm.entity.Grid;
+import com.speane.happyfarm.entity.StockEntity;
 import com.speane.happyfarm.screen.AbstractView;
+
+import java.util.List;
 
 public class UiMainScreenView extends AbstractView implements MainScreenView {
 
@@ -38,6 +41,26 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
     private static final float EXIT_BUTTON_HEIGHT = DEFAULT_HEIGHT / 20;
     private static final float EXIT_BUTTON_X = 0;
     private static final float EXIT_BUTTON_Y = DEFAULT_HEIGHT - EXIT_BUTTON_HEIGHT;
+    private static final String EXIT_BUTTON_TEXTURE = "exit_button";
+
+    private UiEntityStock entityStock;
+    private static final float ENTITY_STOCK_WIDTH = DEFAULT_WIDTH / 5 * 4;
+    private static final float ENTITY_STOCK_HEIGHT = DEFAULT_HEIGHT / 5 * 3;
+    private static final float ENTITY_STOCK_X = DEFAULT_WIDTH / 10;
+    private static final float ENTITY_STOCK_Y = DEFAULT_HEIGHT / 9 * 2;
+
+    private UiButton shopButton;
+    private static final float SHOP_BUTTON_WIDTH = DEFAULT_WIDTH / 6;
+    private static final float SHOP_BUTTON_HEIGHT = DEFAULT_HEIGHT / 20;
+    private static final float SHOP_BUTTON_X = DEFAULT_WIDTH / 2;
+    private static final float SHOP_BUTTON_Y = DEFAULT_HEIGHT - SHOP_BUTTON_HEIGHT;
+    private static final String SHOP_BUTTON_TEXTURE = "shop_button";
+
+    private UiMenu menu;
+    private static final float MENU_WIDTH = DEFAULT_WIDTH / 3 * 2;
+    private static final float MENU_HEIGHT = DEFAULT_HEIGHT / 3;
+    private static final float MENU_X = (DEFAULT_WIDTH - MENU_WIDTH) / 2;
+    private static final float MENU_Y = (DEFAULT_HEIGHT - MENU_HEIGHT) / 2;
 
     private Score score;
 
@@ -76,6 +99,11 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
     }
 
     @Override
+    public void setShopButtonTouchHandler(TouchHandler<UiButton> touchHandler) {
+        shopButton.setTouchHandler(touchHandler);
+    }
+
+    @Override
     public void setGrid(Grid grid) {
         if (grid != null) {
             this.grid.setCells(grid.getCells());
@@ -89,18 +117,37 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
     }
 
     @Override
+    public void showSelectEntityPopup(final Callback<StockEntity> callback) {
+        entityStock.setSelectCallback(new Callback<StockEntity>() {
+            @Override
+            public void execute(StockEntity entity) {
+                if (callback != null) {
+                    callback.execute(entity);
+                }
+            }
+        });
+
+        showModal(entityStock);
+    }
+
+    @Override
     public void hideCellMenu() {
         cellMenuManager.hide();
     }
 
     @Override
-    public void setCellMenuItemCreateHandler(TouchHandler<UiCellMenuItem> handler) {
-        cellMenu.setCreateHandler(handler);
+    public void setCellMenuHealItemTouchHandler(TouchHandler<UiCellMenuItem> handler) {
+        cellMenu.setHealHandler(handler);
     }
 
     @Override
-    public void setCellMenuItemRemoveHandler(TouchHandler<UiCellMenuItem> handler) {
-        cellMenu.setRemoveHandler(handler);
+    public void setCellMenuFeedItemTouchHandler(TouchHandler<UiCellMenuItem> handler) {
+        cellMenu.setFeedHandler(handler);
+    }
+
+    @Override
+    public void setCellMenuSwapItemTouchHandler(TouchHandler<UiCellMenuItem> handler) {
+        cellMenu.setSwapHandler(handler);
     }
 
     @Override
@@ -110,38 +157,23 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
     }
 
     @Override
-    public boolean keyDown(int keycode) {
-        return false;
+    public void setStockEntities(List<StockEntity> entities) {
+        entityStock.setEntities(entities);
     }
 
     @Override
-    public boolean keyUp(int keycode) {
-        return false;
+    public void showMenu() {
+        showModal(menu);
     }
 
     @Override
-    public boolean keyTyped(char character) {
-        return false;
+    public void setMenuSaveButtonHandler(TouchHandler<UiButton> touchHandler) {
+        menu.setSaveButtonHandler(touchHandler);
     }
 
     @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
+    public void setMenuExitButtonHandler(TouchHandler<UiButton> touchHandler) {
+        menu.setExitButtonHandler(touchHandler);
     }
 
     private void initSelf() {
@@ -155,6 +187,9 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
         initScoreLabel();
         initScoreValueLabel();
         initExitButton();
+        initEntityStock();
+        initShopButton();
+        initMenu();
     }
 
     private void initGrid() {
@@ -180,7 +215,7 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
         BitmapFont font = new BitmapFont();
         scoreValueLabel.setFont(font);
         scoreValueLabel.setVisible(true);
-        scoreValueLabel.setValueObserver(new ValueObserver<Integer, Score>(score) {
+        scoreValueLabel.setValueObserver(new ValueObserver<Integer>() {
             @Override
             public Integer getValue() {
                 return getScore() != null ? getScore().getValue() : 0;
@@ -201,7 +236,31 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
         exitButton = new UiButton();
         exitButton.setVisible(true);
         exitButton.setTouchable(true);
+        exitButton.setTexture(EXIT_BUTTON_TEXTURE);
         exitButton.setSize(EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
         appendChild(exitButton, EXIT_BUTTON_X, EXIT_BUTTON_Y);
+    }
+
+    private void initEntityStock() {
+        entityStock = new UiEntityStock();
+        entityStock.setTouchable(true);
+        entityStock.setSize(ENTITY_STOCK_WIDTH, ENTITY_STOCK_HEIGHT);
+        appendChild(entityStock, ENTITY_STOCK_X, ENTITY_STOCK_Y);
+    }
+
+    private void initShopButton() {
+        shopButton = new UiButton();
+        shopButton.setVisible(true);
+        shopButton.setTouchable(true);
+        shopButton.setTexture(SHOP_BUTTON_TEXTURE);
+        shopButton.setSize(SHOP_BUTTON_WIDTH, SHOP_BUTTON_HEIGHT);
+        appendChild(shopButton, SHOP_BUTTON_X, SHOP_BUTTON_Y);
+    }
+
+    private void initMenu() {
+        menu = new UiMenu();
+        menu.setTouchable(true);
+        menu.setSize(MENU_WIDTH, MENU_HEIGHT);
+        appendChild(menu, MENU_X, MENU_Y);
     }
 }

@@ -1,6 +1,7 @@
 package com.speane.happyfarm.render;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.speane.happyfarm.entity.TextureNameRepository;
@@ -9,7 +10,6 @@ import com.speane.happyfarm.table.UiLabel;
 import com.speane.happyfarm.table.UiProgressBarInner;
 import com.speane.happyfarm.table.Widget;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +22,8 @@ public class Renderer {
 
     private Batch batch;
 
+    private Color backgroundColor;
+
     private List<Renderable> renderables;
 
     private Map<Class<? extends Widget>, DrawHandler> drawHandlers;
@@ -29,6 +31,7 @@ public class Renderer {
 
     public Renderer(Batch batch) {
         initBatch(batch);
+        initBackgroundColor();
         initRenderables();
         initDrawHandlers();
         initTextureRepository();
@@ -86,10 +89,12 @@ public class Renderer {
     }
 
     private void clearScreen() {
-        Gdx.gl.glClearColor(
-                Color.WHITE.getRed(), Color.WHITE.getGreen(), Color.WHITE.getBlue(),
-                Color.WHITE.getAlpha());
+        Gdx.gl.glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    }
+
+    private void initBackgroundColor() {
+        backgroundColor = Color.valueOf("B0BEC5FF");
     }
 
     private void initBatch(Batch batch) {

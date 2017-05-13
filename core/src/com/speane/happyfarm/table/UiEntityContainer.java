@@ -62,6 +62,7 @@ public class UiEntityContainer extends UiWrapper {
         uiEntity.setSize(getInnerAreaWidth(), getInnerAreaHeight());
         uiEntity.setVisible(true);
         uiEntity.setEntity(entity);
+        uiEntity.setTexture(entity.getType().getTextureName());
         appendChild(uiEntity, getHorizontalOffset(), getVerticalOffset());
     }
 

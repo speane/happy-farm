@@ -4,23 +4,30 @@ import com.speane.happyfarm.entity.Cell;
 
 public class UiCellMenu extends Widget {
 
-    private static final float DEFAULT_WIDTH = 300;
-    private static final float DEFAULT_HEIGHT = 100;
-    private static final String DEFAULT_TEXTURE_NAME = "cell_menu";
+    private static final float WIDTH = 300;
+    private static final float HEIGHT = 100;
+    private static final String TEXTURE = "cell_menu";
 
-    private UiCellMenuItem createItem;
-    private static final float CREATE_ITEM_WIDTH = DEFAULT_WIDTH / 3;
-    private static final float CREATE_ITEM_HEIGHT = DEFAULT_HEIGHT / 5 * 4;
-    private static final float CREATE_ITEM_X = (DEFAULT_WIDTH - CREATE_ITEM_WIDTH * 2) / 3;
-    private static final float CREATE_ITEM_Y = DEFAULT_HEIGHT / 10;
-    private static final String CREATE_ITEM_TEXTURE_NAME = "create_menu_item";
+    private UiCellMenuItem healItem;
+    private static final float HEAL_ITEM_WIDTH = WIDTH / 4;
+    private static final float HEAL_ITEM_HEIGHT = HEIGHT / 5 * 4;
+    private static final float HEAL_ITEM_X = (WIDTH - HEAL_ITEM_WIDTH * 3) / 4;
+    private static final float HEAL_ITEM_Y = HEIGHT / 10;
+    private static final String HEAL_ITEM_TEXTURE = "heal_button";
 
-    private UiCellMenuItem removeItem;
-    private static final float REMOVE_ITEM_WIDTH = DEFAULT_WIDTH / 3;
-    private static final float REMOVE_ITEM_HEIGHT = DEFAULT_HEIGHT / 5 * 4;
-    private static final float REMOVE_ITEM_X = (DEFAULT_WIDTH - CREATE_ITEM_WIDTH * 2) / 3 * 2 + CREATE_ITEM_WIDTH;
-    private static final float REMOVE_ITEM_Y = DEFAULT_HEIGHT / 10;
-    private static final String REMOVE_ITEM_TEXTURE_NAME = "remove_menu_item";
+    private UiCellMenuItem feedItem;
+    private static final float FEED_ITEM_WIDTH = WIDTH / 4;
+    private static final float FEED_ITEM_HEIGHT = HEIGHT / 5 * 4;
+    private static final float FEED_ITEM_X = (WIDTH - HEAL_ITEM_WIDTH * 3) / 4 * 2 + HEAL_ITEM_WIDTH;
+    private static final float FEED_ITEM_Y = HEIGHT / 10;
+    private static final String FEED_ITEM_TEXTURE = "feed_button";
+
+    private UiCellMenuItem swapItem;
+    private static final float SWAP_ITEM_WIDTH = WIDTH / 4;
+    private static final float SWAP_ITEM_HEIGHT = HEIGHT / 5 * 4;
+    private static final float SWAP_ITEM_X = (WIDTH - HEAL_ITEM_WIDTH * 3) / 4 * 3 + HEAL_ITEM_WIDTH * 2;
+    private static final float SWAP_ITEM_Y = HEIGHT / 10;
+    private static final String SWAP_ITEM_TEXTURE = "swap_button";
 
     private Cell cell;
 
@@ -31,17 +38,17 @@ public class UiCellMenu extends Widget {
 
     @Override
     protected float getDefaultWidth() {
-        return DEFAULT_WIDTH;
+        return WIDTH;
     }
 
     @Override
     protected float getDefaultHeight() {
-        return DEFAULT_HEIGHT;
+        return HEIGHT;
     }
 
     @Override
     protected String getDefaultTextureName() {
-        return DEFAULT_TEXTURE_NAME;
+        return TEXTURE;
     }
 
     public Cell getCell() {
@@ -50,38 +57,52 @@ public class UiCellMenu extends Widget {
 
     public void setCell(Cell cell) {
         this.cell = cell;
-        createItem.setCell(cell);
-        removeItem.setCell(cell);
+        healItem.setCell(cell);
+        feedItem.setCell(cell);
     }
 
-    public void setCreateHandler(TouchHandler touchHandler) {
-        createItem.setTouchHandler(touchHandler);
+    public void setHealHandler(TouchHandler touchHandler) {
+        healItem.setTouchHandler(touchHandler);
     }
 
-    public void setRemoveHandler(TouchHandler touchHandler) {
-        removeItem.setTouchHandler(touchHandler);
+    public void setFeedHandler(TouchHandler touchHandler) {
+        feedItem.setTouchHandler(touchHandler);
+    }
+
+    public void setSwapHandler(TouchHandler touchHandler) {
+        swapItem.setTouchHandler(touchHandler);
     }
 
     private void initUi() {
-        initCreateItem();
-        initRemoveItem();
+        initHealItem();
+        initFeedItem();
+        initSwapItem();
     }
 
-    private void initCreateItem() {
-        createItem = new UiCellMenuItem();
-        createItem.setTexture(CREATE_ITEM_TEXTURE_NAME);
-        createItem.setSize(CREATE_ITEM_WIDTH, CREATE_ITEM_HEIGHT);
-        createItem.setVisible(true);
-        createItem.setTouchable(true);
-        appendChild(createItem, CREATE_ITEM_X, CREATE_ITEM_Y);
+    private void initHealItem() {
+        healItem = new UiCellMenuItem();
+        healItem.setTexture(HEAL_ITEM_TEXTURE);
+        healItem.setSize(HEAL_ITEM_WIDTH, HEAL_ITEM_HEIGHT);
+        healItem.setVisible(true);
+        healItem.setTouchable(true);
+        appendChild(healItem, HEAL_ITEM_X, HEAL_ITEM_Y);
     }
 
-    private void initRemoveItem() {
-        removeItem = new UiCellMenuItem();
-        removeItem.setTexture(REMOVE_ITEM_TEXTURE_NAME);
-        removeItem.setSize(REMOVE_ITEM_WIDTH, REMOVE_ITEM_HEIGHT);
-        removeItem.setVisible(true);
-        removeItem.setTouchable(true);
-        appendChild(removeItem, REMOVE_ITEM_X, REMOVE_ITEM_Y);
+    private void initFeedItem() {
+        feedItem = new UiCellMenuItem();
+        feedItem.setTexture(FEED_ITEM_TEXTURE);
+        feedItem.setSize(FEED_ITEM_WIDTH, FEED_ITEM_HEIGHT);
+        feedItem.setVisible(true);
+        feedItem.setTouchable(true);
+        appendChild(feedItem, FEED_ITEM_X, FEED_ITEM_Y);
+    }
+
+    private void initSwapItem() {
+        swapItem = new UiCellMenuItem();
+        swapItem.setTexture(SWAP_ITEM_TEXTURE);
+        swapItem.setSize(SWAP_ITEM_WIDTH, SWAP_ITEM_HEIGHT);
+        swapItem.setVisible(true);
+        swapItem.setTouchable(true);
+        appendChild(swapItem, SWAP_ITEM_X, SWAP_ITEM_Y);
     }
 }

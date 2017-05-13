@@ -17,11 +17,16 @@ public class UiLabel extends Widget {
     }
 
     public String getText() {
-        return text;
+        return text != null ? text : "";
     }
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    protected void init() {
+        font = new BitmapFont();
     }
 
     @Override

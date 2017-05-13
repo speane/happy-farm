@@ -149,6 +149,10 @@ public abstract class Widget implements Renderable {
         childWidgets.remove(widget);
     }
 
+    protected void removeAllChildren() {
+        childWidgets.clear();
+    }
+
     public void onTouched() {
         if (touchHandler != null) {
             touchHandler.onTouch(this);

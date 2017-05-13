@@ -1,13 +1,24 @@
 package com.speane.happyfarm.screen;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.speane.happyfarm.entity.Grid;
+import com.speane.happyfarm.entity.StockEntity;
 import com.speane.happyfarm.table.GameStateListener;
+import com.speane.happyfarm.table.Score;
+
+import java.util.List;
 
 public abstract class AbstractScreen<V extends AbstractView, G extends AbstractGame> extends ScreenAdapter
         implements GameStateListener {
 
     private V view;
     private G game;
+
+    @Override
+    public void show() {
+        Gdx.input.setInputProcessor(view);
+    }
 
     @Override
     public void render(float delta) {
@@ -48,5 +59,17 @@ public abstract class AbstractScreen<V extends AbstractView, G extends AbstractG
     public void setGame(G game) {
         this.game = game;
         subscribeOnGameState();
+    }
+
+    @Override
+    public void gridChanged(Grid grid) {
+    }
+
+    @Override
+    public void scoreChanged(Score score) {
+    }
+
+    @Override
+    public void stockChanged(List<StockEntity> stock) {
     }
 }

@@ -1,6 +1,5 @@
 package com.speane.happyfarm.screen;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.speane.happyfarm.render.Renderable;
@@ -9,13 +8,16 @@ import com.speane.happyfarm.table.Widget;
 
 public abstract class AbstractView extends Widget implements InputProcessor, Renderable {
 
+    protected static final float WIDTH = 640;
+    protected static final float HEIGHT = 640;
+
     private Renderer renderer;
 
     private Widget modalWidget;
 
     public AbstractView() {
+        initSelf();
         initRenderer();
-        initInputProcessor();
     }
 
     public void render() {
@@ -24,6 +26,26 @@ public abstract class AbstractView extends Widget implements InputProcessor, Ren
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         if (modalWidget != null && !modalWidget.isTouched(screenX, getHeight() - screenY)) {
             hideModal(modalWidget);
         } else {
@@ -31,9 +53,11 @@ public abstract class AbstractView extends Widget implements InputProcessor, Ren
                 Widget touchedWidget = modalWidget.getTouched(screenX, getHeight() - screenY);
                 if (touchedWidget != null) {
                     touchedWidget.onTouched();
+                    hideModal(modalWidget);
                     return true;
                 }
             }
+
             for (Widget widget : getChildWidgets()) {
                 Widget touchedWidget = widget.getTouched(screenX, getHeight() - screenY);
                 if (touchedWidget != null) {
@@ -43,6 +67,21 @@ public abstract class AbstractView extends Widget implements InputProcessor, Ren
             }
         }
 
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
         return false;
     }
 
@@ -60,12 +99,28 @@ public abstract class AbstractView extends Widget implements InputProcessor, Ren
         }
     }
 
+    @Override
+    protected float getDefaultWidth() {
+        return WIDTH;
+    }
+
+    @Override
+    protected float getDefaultHeight() {
+        return HEIGHT;
+    }
+
+    @Override
+    protected String getDefaultTextureName() {
+        return null;
+    }
+
     private void initRenderer() {
         renderer = new Renderer(new SpriteBatch());
         renderer.addRenderable(this);
     }
 
-    private void initInputProcessor() {
-        Gdx.input.setInputProcessor(this);
+    private void initSelf() {
+        setVisible(true);
+        setTouchable(true);
     }
 }

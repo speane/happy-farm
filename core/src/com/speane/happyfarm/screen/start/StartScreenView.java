@@ -1,13 +1,11 @@
 package com.speane.happyfarm.screen.start;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.speane.happyfarm.render.Renderer;
 import com.speane.happyfarm.screen.AbstractView;
 import com.speane.happyfarm.table.TouchHandler;
 import com.speane.happyfarm.table.UiButton;
 import com.speane.happyfarm.table.UiImage;
-import com.speane.happyfarm.table.Widget;
 
 public class StartScreenView extends AbstractView implements View {
 
@@ -26,6 +24,21 @@ public class StartScreenView extends AbstractView implements View {
     private static final float START_BUTTON_HEIGHT = DEFAULT_HEIGHT / 15;
     private static final float START_BUTTON_X = (DEFAULT_WIDTH - START_BUTTON_WIDTH) / 2;
     private static final float START_BUTTON_Y = (DEFAULT_HEIGHT - START_BUTTON_HEIGHT) / 5 * 2;
+    private static final String START_BUTTON_TEXTURE = "new_game_button";
+
+    private UiButton loadButton;
+    private static final float LOAD_BUTTON_WIDTH = START_BUTTON_WIDTH;
+    private static final float LOAD_BUTTON_HEIGHT = START_BUTTON_HEIGHT;
+    private static final float LOAD_BUTTON_X = START_BUTTON_X;
+    private static final float LOAD_BUTTON_Y = START_BUTTON_Y - START_BUTTON_HEIGHT * 3 / 2;
+    private static final String LOAD_BUTTON_TEXTURE = "load_button";
+
+    private UiButton exitButton;
+    private static final float EXIT_BUTTON_WIDTH = START_BUTTON_WIDTH;
+    private static final float EXIT_BUTTON_HEIGHT = START_BUTTON_HEIGHT;
+    private static final float EXIT_BUTTON_X = START_BUTTON_X;
+    private static final float EXIT_BUTTON_Y = LOAD_BUTTON_Y - START_BUTTON_HEIGHT * 3 / 2;
+    private static final String EXIT_BUTTON_TEXTURE = "start_screen_exit_button";
 
     private Renderer renderer;
 
@@ -34,51 +47,8 @@ public class StartScreenView extends AbstractView implements View {
     }
 
     @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        for (Widget widget : getChildWidgets()) {
-            Widget touchedWidget = widget.getTouched(screenX, getHeight() - screenY);
-            if (touchedWidget != null) {
-                touchedWidget.onTouched();
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
+    public void setStartButtonTouchHandler(TouchHandler<UiButton> touchHandler) {
+        startButton.setTouchHandler(touchHandler);
     }
 
     @Override
@@ -103,15 +73,10 @@ public class StartScreenView extends AbstractView implements View {
     }
 
     private void initUi() {
-        setVisible(true);
-        setTouchable(true);
-        setInputProcessor();
         initMainTitleImage();
         initStartButton();
-    }
-
-    private void setInputProcessor() {
-        Gdx.input.setInputProcessor(this);
+        initLoadButton();
+        initExitButton();
     }
 
     private void initRenderer() {
@@ -132,11 +97,25 @@ public class StartScreenView extends AbstractView implements View {
         startButton.setSize(START_BUTTON_WIDTH, START_BUTTON_HEIGHT);
         startButton.setVisible(true);
         startButton.setTouchable(true);
+        startButton.setTexture(START_BUTTON_TEXTURE);
         appendChild(startButton, START_BUTTON_X, START_BUTTON_Y);
     }
 
-    @Override
-    public void setStartButtonTouchHandler(TouchHandler<UiButton> touchHandler) {
-        startButton.setTouchHandler(touchHandler);
+    private void initLoadButton() {
+        loadButton = new UiButton();
+        loadButton.setTouchable(true);
+        loadButton.setVisible(true);
+        loadButton.setSize(LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);
+        loadButton.setTexture(LOAD_BUTTON_TEXTURE);
+        appendChild(loadButton, LOAD_BUTTON_X, LOAD_BUTTON_Y);
+    }
+
+    private void initExitButton() {
+        exitButton = new UiButton();
+        exitButton.setTouchable(true);
+        exitButton.setVisible(true);
+        exitButton.setSize(EXIT_BUTTON_WIDTH, EXIT_BUTTON_HEIGHT);
+        exitButton.setTexture(EXIT_BUTTON_TEXTURE);
+        appendChild(exitButton, EXIT_BUTTON_X, EXIT_BUTTON_Y);
     }
 }

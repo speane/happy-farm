@@ -2,40 +2,66 @@ package com.speane.happyfarm.entity;
 
 public class Entity {
 
-    private static final float DEFAULT_MAX_AGE = 100;
+    private EntityType type;
+    private float readiness;
+    private float health;
+    private float satiety;
 
-    private float maxAge;
-    private float age;
-
-    public Entity() {
-        initMaxAge();
+    public Entity(EntityType type) {
+        this.type = type;
     }
 
-    public float getAge() {
-        return age;
+    public void update(float time) {
+        updateHealth(time);
+        updateReadiness(time);
+        updateSatiety(time);
     }
 
-    public void setAge(float age) {
-        this.age = age;
+    public EntityType getType() {
+        return type;
     }
 
-    public float getMaxAge() {
-        return maxAge;
+    public void setType(EntityType type) {
+        this.type = type;
     }
 
-    public void setMaxAge(float maxAge) {
-        this.maxAge = maxAge;
+    public float getReadiness() {
+        return readiness;
     }
 
-    public void update(float delta) {
-        updateAge(delta);
+    public void setReadiness(float readiness) {
+        this.readiness = readiness;
     }
 
-    private void updateAge(float delta) {
-        this.age += delta;
+    public float getHealth() {
+        return health;
     }
 
-    private void initMaxAge() {
-        maxAge = DEFAULT_MAX_AGE;
+    public void setHealth(float health) {
+        this.health = health;
+    }
+
+    public float getSatiety() {
+        return satiety;
+    }
+
+    public void setSatiety(float satiety) {
+        this.satiety = satiety;
+    }
+
+    public boolean isReady() {
+        return readiness >= 1;
+    }
+
+    private void updateReadiness(float time) {
+        readiness += Math.min(1, time * getType().getReadinessVelocity());
+    }
+
+    private void updateHealth(float time) {
+        health = Math.max(0, health + time * getType().getHealthVelocity());
+    }
+
+    private void updateSatiety(float time) {
+        satiety = Math.max(0, satiety + time * getType().getSatietyVelocity());
     }
 }

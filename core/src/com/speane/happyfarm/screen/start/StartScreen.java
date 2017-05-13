@@ -1,7 +1,6 @@
 package com.speane.happyfarm.screen.start;
 
 import com.speane.happyfarm.HappyFarmGame;
-import com.speane.happyfarm.entity.Grid;
 import com.speane.happyfarm.screen.AbstractScreen;
 import com.speane.happyfarm.table.TouchHandler;
 import com.speane.happyfarm.table.UiButton;
@@ -25,10 +24,5 @@ public class StartScreen extends AbstractScreen<StartScreenView, HappyFarmGame> 
                 getGame().showMainScreen();
             }
         });
-    }
-
-    @Override
-    public void gridChanged(Grid grid) {
-
     }
 }

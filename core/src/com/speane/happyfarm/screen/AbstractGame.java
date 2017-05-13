@@ -26,6 +26,18 @@ public abstract class AbstractGame extends Game implements GameStateOwner {
         }
     }
 
+    public void scoreUpdated() {
+        for (GameStateListener gameStateListener : gameStateListeners) {
+            gameStateListener.scoreChanged(getScore());
+        }
+    }
+
+    public void stockUpdated() {
+        for (GameStateListener gameStateListener : gameStateListeners) {
+            gameStateListener.stockChanged(getStockEntities());
+        }
+    }
+
     @Override
     public void addGameStateListener(GameStateListener listener) {
         gameStateListeners.add(listener);

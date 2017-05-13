@@ -6,10 +6,10 @@ public class UiProgressBarInner extends Widget {
     private static final float DEFAULT_HEIGHT = 20;
     private static final String DEFAULT_TEXTURE_NAME = "progress_bar";
 
-    private ProgressObserver progressObserver;
+    private ValueObserver<Float> valueObserver;
 
-    public void setProgressObserver(ProgressObserver progressObserver) {
-        this.progressObserver = progressObserver;
+    public void setValueObserver(ValueObserver valueObserver) {
+        this.valueObserver = valueObserver;
     }
 
     public float getCurrentWidth() {
@@ -32,6 +32,10 @@ public class UiProgressBarInner extends Widget {
     }
 
     private float getProgress() {
-        return progressObserver != null ? progressObserver.getProgress() : 0;
+        return valueObserver != null && valueObserver.getValue() > 0
+                ? valueObserver.getValue() < 1
+                        ? valueObserver.getValue()
+                        : 1
+                : 0;
     }
 }

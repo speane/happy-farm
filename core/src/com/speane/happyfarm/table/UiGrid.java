@@ -26,12 +26,18 @@ public class UiGrid extends UiWrapper {
     }
 
     public void setCells(Cell[][] cells) {
+        this.cells = cells;
+        uiCells = null;
+        removeAllChildren();
         if (checkCells(cells)) {
-            this.cells = cells;
             rowCount = cells.length;
             columnCount = cells[0].length;
-            initCells();
+        } else {
+            rowCount = 0;
+            columnCount = 0;
         }
+
+        initCells();
     }
 
     @Override
