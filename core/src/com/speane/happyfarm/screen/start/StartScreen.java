@@ -18,10 +18,35 @@ public class StartScreen extends AbstractScreen<StartScreenView, HappyFarmGame> 
     }
 
     private void initHandlers() {
+        initStartButtonHandler();
+        initLoadButtonHandler();
+        initExitButtonHandler();
+    }
+
+    private void initStartButtonHandler() {
         getView().setStartButtonTouchHandler(new TouchHandler<UiButton>() {
             @Override
             public void onTouch(UiButton widget) {
+                getGame().startNewGame();
+            }
+        });
+    }
+
+    private void initLoadButtonHandler() {
+        getView().setLoadButtonTouchHandler(new TouchHandler<UiButton>() {
+            @Override
+            public void onTouch(UiButton widget) {
+                getGame().loadGame();
                 getGame().showMainScreen();
+            }
+        });
+    }
+
+    private void initExitButtonHandler() {
+        getView().setExitButtonTouchHandler(new TouchHandler<UiButton>() {
+            @Override
+            public void onTouch(UiButton widget) {
+                getGame().exit();
             }
         });
     }

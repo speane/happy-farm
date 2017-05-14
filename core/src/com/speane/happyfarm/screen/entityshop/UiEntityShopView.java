@@ -11,14 +11,14 @@ public class UiEntityShopView extends AbstractView implements EntityShopView {
 
     private UiButton exitButton;
     private static final float EXIT_BUTTON_WIDTH = WIDTH / 6;
-    private static final float EXIT_BUTTON_HEIGHT = HEIGHT / 20;
+    private static final float EXIT_BUTTON_HEIGHT = HEIGHT / 15;
     private static final float EXIT_BUTTON_X = 0;
     private static final float EXIT_BUTTON_Y = HEIGHT - EXIT_BUTTON_HEIGHT;
     private static final String EXIT_BUTTON_TEXTURE = "exit_button";
 
     private UiEntityTable uiEntityTable;
     private static final float ENTITY_TABLE_WIDTH = WIDTH;
-    private static final float ENTITY_TABLE_HEIGHT = HEIGHT / 5 * 4;
+    private static final float ENTITY_TABLE_HEIGHT = HEIGHT / 7 * 6;
     private static final float ENTITY_TABLE_X = 0;
     private static final float ENTITY_TABLE_Y = 0;
 

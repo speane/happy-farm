@@ -1,0 +1,85 @@
+{
+grid: {
+	cells: [
+		[
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+		]
+		[
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+		]
+		[
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+		]
+		[
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+			{
+				container: {}
+			}
+		]
+	]
+}
+score: {
+	value: 2000
+}
+stock: [
+	{
+		type: {
+			textureName: first_entity
+			readinessVelocity: 0.15
+			healthVelocity: 0.03
+			satietyVelocity: 0.04
+			price: 156
+		}
+	}
+	{
+		type: {
+			textureName: second_entity
+			readinessVelocity: 0.5
+			healthVelocity: 0.5
+			satietyVelocity: 0.5
+			price: 452
+		}
+	}
+]
+}

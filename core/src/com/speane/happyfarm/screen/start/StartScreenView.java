@@ -16,8 +16,8 @@ public class StartScreenView extends AbstractView implements View {
     private static final float MAIN_TITLE_IMAGE_WIDTH = DEFAULT_WIDTH / 5 * 4;
     private static final float MAIN_TITLE_IMAGE_HEIGHT = DEFAULT_HEIGHT / 3;
     private static final float MAIN_TITLE_IMAGE_X = (DEFAULT_WIDTH - MAIN_TITLE_IMAGE_WIDTH) / 2;
-    private static final float MAIN_TITLE_IMAGE_Y = (DEFAULT_HEIGHT - MAIN_TITLE_IMAGE_HEIGHT) / 3 * 2;
-    private static final String MAIN_TITLE_IMAGE_TEXTURE_NAME = "main_title";
+    private static final float MAIN_TITLE_IMAGE_Y = (DEFAULT_HEIGHT - MAIN_TITLE_IMAGE_HEIGHT) / 5 * 4;
+    private static final String MAIN_TITLE_IMAGE_TEXTURE_NAME = "start_screen_image";
 
     private UiButton startButton;
     private static final float START_BUTTON_WIDTH = DEFAULT_WIDTH / 3;
@@ -49,6 +49,16 @@ public class StartScreenView extends AbstractView implements View {
     @Override
     public void setStartButtonTouchHandler(TouchHandler<UiButton> touchHandler) {
         startButton.setTouchHandler(touchHandler);
+    }
+
+    @Override
+    public void setLoadButtonTouchHandler(TouchHandler<UiButton> touchHandler) {
+        loadButton.setTouchHandler(touchHandler);
+    }
+
+    @Override
+    public void setExitButtonTouchHandler(TouchHandler<UiButton> touchHandler) {
+        exitButton.setTouchHandler(touchHandler);
     }
 
     @Override

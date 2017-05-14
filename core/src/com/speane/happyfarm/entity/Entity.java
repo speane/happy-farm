@@ -6,15 +6,18 @@ public class Entity {
     private float readiness;
     private float health;
     private float satiety;
+    private float healthVelocity;
+    private float readinessVelocity;
+    private float satietyVelocity;
+
+    public Entity() {
+    }
 
     public Entity(EntityType type) {
         this.type = type;
-    }
-
-    public void update(float time) {
-        updateHealth(time);
-        updateReadiness(time);
-        updateSatiety(time);
+        this.healthVelocity = type.getHealthVelocity();
+        this.readinessVelocity = type.getReadinessVelocity();
+        this.satietyVelocity = type.getSatietyVelocity();
     }
 
     public EntityType getType() {
@@ -49,19 +52,35 @@ public class Entity {
         this.satiety = satiety;
     }
 
+    public float getHealthVelocity() {
+        return healthVelocity;
+    }
+
+    public void setHealthVelocity(float healthVelocity) {
+        this.healthVelocity = healthVelocity;
+    }
+
+    public float getReadinessVelocity() {
+        return readinessVelocity;
+    }
+
+    public void setReadinessVelocity(float readinessVelocity) {
+        this.readinessVelocity = readinessVelocity;
+    }
+
+    public float getSatietyVelocity() {
+        return satietyVelocity;
+    }
+
+    public void setSatietyVelocity(float satietyVelocity) {
+        this.satietyVelocity = satietyVelocity;
+    }
+
     public boolean isReady() {
         return readiness >= 1;
     }
 
-    private void updateReadiness(float time) {
-        readiness += Math.min(1, time * getType().getReadinessVelocity());
-    }
-
-    private void updateHealth(float time) {
-        health = Math.max(0, health + time * getType().getHealthVelocity());
-    }
-
-    private void updateSatiety(float time) {
-        satiety = Math.max(0, satiety + time * getType().getSatietyVelocity());
+    public boolean isAlive() {
+        return health > 0;
     }
 }

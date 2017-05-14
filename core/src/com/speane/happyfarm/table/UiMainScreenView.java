@@ -29,7 +29,7 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
 
     private UiLabel scoreLabel;
     private static final float SCORE_LABEL_WIDTH = 70;
-    private static final float SCORE_LABEL_X = DEFAULT_WIDTH / 6 * 5;
+    private static final float SCORE_LABEL_X = DEFAULT_WIDTH / 2 - SCORE_LABEL_WIDTH / 2;
     private static final float SCORE_LABEL_Y = DEFAULT_HEIGHT / 30 * 29;
 
     private UiValueLabel scoreValueLabel;
@@ -38,10 +38,10 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
 
     private UiButton exitButton;
     private static final float EXIT_BUTTON_WIDTH = DEFAULT_WIDTH / 6;
-    private static final float EXIT_BUTTON_HEIGHT = DEFAULT_HEIGHT / 20;
+    private static final float EXIT_BUTTON_HEIGHT = DEFAULT_HEIGHT / 15;
     private static final float EXIT_BUTTON_X = 0;
     private static final float EXIT_BUTTON_Y = DEFAULT_HEIGHT - EXIT_BUTTON_HEIGHT;
-    private static final String EXIT_BUTTON_TEXTURE = "exit_button";
+    private static final String EXIT_BUTTON_TEXTURE = "menu_button";
 
     private UiEntityStock entityStock;
     private static final float ENTITY_STOCK_WIDTH = DEFAULT_WIDTH / 5 * 4;
@@ -51,8 +51,8 @@ public class UiMainScreenView extends AbstractView implements MainScreenView {
 
     private UiButton shopButton;
     private static final float SHOP_BUTTON_WIDTH = DEFAULT_WIDTH / 6;
-    private static final float SHOP_BUTTON_HEIGHT = DEFAULT_HEIGHT / 20;
-    private static final float SHOP_BUTTON_X = DEFAULT_WIDTH / 2;
+    private static final float SHOP_BUTTON_HEIGHT = DEFAULT_HEIGHT / 15;
+    private static final float SHOP_BUTTON_X = DEFAULT_WIDTH - SHOP_BUTTON_WIDTH;
     private static final float SHOP_BUTTON_Y = DEFAULT_HEIGHT - SHOP_BUTTON_HEIGHT;
     private static final String SHOP_BUTTON_TEXTURE = "shop_button";
 

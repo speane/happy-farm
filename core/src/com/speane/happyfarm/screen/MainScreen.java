@@ -1,9 +1,12 @@
 package com.speane.happyfarm.screen;
 
+import com.badlogic.gdx.utils.Json;
 import com.speane.happyfarm.HappyFarmGame;
 import com.speane.happyfarm.entity.Grid;
 import com.speane.happyfarm.entity.StockEntity;
 import com.speane.happyfarm.table.*;
+
+import java.util.List;
 
 public class MainScreen extends AbstractScreen<UiMainScreenView, HappyFarmGame> {
 
@@ -16,6 +19,16 @@ public class MainScreen extends AbstractScreen<UiMainScreenView, HappyFarmGame> 
     @Override
     public void gridChanged(Grid grid) {
         getView().setGrid(grid);
+    }
+
+    @Override
+    public void scoreChanged(Score score) {
+        getView().setScore(score);
+    }
+
+    @Override
+    public void stockChanged(List<StockEntity> list) {
+        getView().setStockEntities(list);
     }
 
     private void initData() {

@@ -2,6 +2,7 @@ package com.speane.happyfarm.screen.entityshop;
 
 import com.speane.happyfarm.HappyFarmGame;
 import com.speane.happyfarm.screen.AbstractScreen;
+import com.speane.happyfarm.table.Score;
 import com.speane.happyfarm.table.TouchHandler;
 import com.speane.happyfarm.table.UiButton;
 
@@ -10,6 +11,11 @@ public class EntityShopScreen extends AbstractScreen<UiEntityShopView, HappyFarm
     public EntityShopScreen(HappyFarmGame game) {
         initGame(game);
         initView();
+    }
+
+    @Override
+    public void scoreChanged(Score score) {
+        getView().setScore(score);
     }
 
     private void initGame(HappyFarmGame game) {

@@ -36,8 +36,12 @@ public class UiEntityStock extends Widget {
     public void setEntities(List<StockEntity> entities) {
         removeAllChildren();
         if (entities != null && !entities.isEmpty()) {
+            int realIndex = 0;
             for (int i = 0; i < entities.size() && i < ROW_COUNT * COLUMN_COUNT; i++) {
-                createStockEntity(entities.get(i), i / COLUMN_COUNT, i % COLUMN_COUNT);
+                if (entities.get(i).getAmount() > 0) {
+                    createStockEntity(entities.get(i), realIndex / COLUMN_COUNT, realIndex % COLUMN_COUNT);
+                    realIndex++;
+                }
             }
         }
     }

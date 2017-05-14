@@ -8,7 +8,7 @@ public class UiMenu extends Widget {
 
     private UiButton saveButton;
     private static final float SAVE_BUTTON_WIDTH = WIDTH / 5 * 4;
-    private static final float SAVE_BUTTON_HEIGHT = HEIGHT / 5;
+    private static final float SAVE_BUTTON_HEIGHT = HEIGHT / 4;
     private static final float SAVE_BUTTON_X = (WIDTH - SAVE_BUTTON_WIDTH) / 2;
     private static final float SAVE_BUTTON_Y = HEIGHT / 5 * 3;
     private static final String SAVE_BUTTON_TEXTURE = "menu_save_button";

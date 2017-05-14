@@ -14,7 +14,6 @@ public class UiEntityTable extends Widget {
 
     private static final float WIDTH = 640;
     private static final float HEIGHT = 480;
-    private static final String TEXTURE_NAME = "entity_shop_table";
 
     private List<UiEntityType> uiEntityTypes;
 
@@ -40,7 +39,7 @@ public class UiEntityTable extends Widget {
 
     @Override
     protected String getDefaultTextureName() {
-        return TEXTURE_NAME;
+        return null;
     }
 
     private void initEntityTypeCells(List<EntityType> types) {

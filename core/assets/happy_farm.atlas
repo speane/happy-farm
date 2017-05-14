@@ -1,341 +1,383 @@
 
 happy_farm.png
-size: 2048,2048
+size: 4096,4096
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 Untitled
   rotate: false
-  xy: 1486, 362
+  xy: 2120, 238
   size: 396, 12
   orig: 396, 12
   offset: 0, 0
   index: -1
 readiness
   rotate: false
-  xy: 1486, 362
+  xy: 2120, 238
   size: 396, 12
   orig: 396, 12
   offset: 0, 0
   index: -1
 readiness_bar
   rotate: false
-  xy: 1486, 362
+  xy: 2120, 238
   size: 396, 12
   orig: 396, 12
   offset: 0, 0
   index: -1
-badlogic
+carrot
   rotate: false
-  xy: 1486, 1274
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-button
-  rotate: false
-  xy: 844, 198
-  size: 400, 80
-  orig: 400, 80
-  offset: 0, 0
-  index: -1
-cell
-  rotate: false
-  xy: 1486, 1532
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: -1
-cell_menu
-  rotate: false
-  xy: 2, 192
-  size: 840, 360
-  orig: 840, 360
-  offset: 0, 0
-  index: -1
-container
-  rotate: false
-  xy: 1486, 1016
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-create_menu_item
-  rotate: false
-  xy: 1486, 758
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-entity
-  rotate: false
-  xy: 1486, 500
-  size: 256, 256
-  orig: 256, 256
+  xy: 2564, 2814
+  size: 1280, 1280
+  orig: 1280, 1280
   offset: 0, 0
   index: -1
 entity_shop_table
   rotate: false
-  xy: 844, 1404
-  size: 640, 640
-  orig: 640, 640
-  offset: 0, 0
-  index: -1
-menu
-  rotate: false
-  xy: 844, 1404
-  size: 640, 640
-  orig: 640, 640
+  xy: 2564, 1532
+  size: 1280, 1280
+  orig: 1280, 1280
   offset: 0, 0
   index: -1
 entity_stock
   rotate: false
-  xy: 844, 922
-  size: 640, 480
-  orig: 640, 480
+  xy: 2, 2174
+  size: 2560, 1920
+  orig: 2560, 1920
   offset: 0, 0
   index: -1
-exit_button
+entity_type
   rotate: false
-  xy: 1744, 1274
-  size: 256, 256
-  orig: 256, 256
+  xy: 2, 252
+  size: 2560, 1920
+  orig: 2560, 1920
   offset: 0, 0
   index: -1
 feed_bar
   rotate: false
-  xy: 2, 6
+  xy: 1198, 36
   size: 396, 12
   orig: 396, 12
-  offset: 0, 0
-  index: -1
-feed_button
-  rotate: false
-  xy: 1744, 1016
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-first_entity
-  rotate: false
-  xy: 1744, 758
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-heal_button
-  rotate: false
-  xy: 1744, 500
-  size: 256, 256
-  orig: 256, 256
   offset: 0, 0
   index: -1
 health_bar
   rotate: false
-  xy: 1486, 348
+  xy: 3148, 236
   size: 396, 12
   orig: 396, 12
   offset: 0, 0
   index: -1
-left_table_button
-  rotate: false
-  xy: 1486, 90
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
 load_button
   rotate: false
-  xy: 404, 68
-  size: 256, 96
-  orig: 256, 96
+  xy: 1606, 58
+  size: 512, 192
+  orig: 512, 192
   offset: 0, 0
   index: -1
 main_screen_back_button
   rotate: false
-  xy: 844, 100
+  xy: 3148, 138
   size: 256, 96
   orig: 256, 96
   offset: 0, 0
   index: -1
-main_title
+menu
   rotate: false
-  xy: 2, 1324
-  size: 840, 720
-  orig: 840, 720
+  xy: 2564, 250
+  size: 1280, 1280
+  orig: 1280, 1280
   offset: 0, 0
   index: -1
 menu_exit_button
   rotate: false
-  xy: 2, 64
-  size: 400, 100
-  orig: 400, 100
+  xy: 2, 50
+  size: 800, 200
+  orig: 800, 200
   offset: 0, 0
   index: -1
 menu_save_button
   rotate: false
-  xy: 1486, 398
-  size: 400, 100
-  orig: 400, 100
+  xy: 804, 50
+  size: 800, 200
+  orig: 800, 200
   offset: 0, 0
   index: -1
 new_game_button
   rotate: false
-  xy: 1102, 100
-  size: 256, 96
-  orig: 256, 96
+  xy: 2120, 44
+  size: 512, 192
+  orig: 512, 192
   offset: 0, 0
   index: -1
 progress_bar
   rotate: false
-  xy: 2, 42
+  xy: 2, 2
   size: 400, 20
   orig: 400, 20
   offset: 0, 0
   index: -1
 progress_bar_outer
   rotate: false
-  xy: 1486, 376
+  xy: 404, 2
   size: 400, 20
   orig: 400, 20
   offset: 0, 0
   index: -1
 progress_bar_wrapper
   rotate: false
-  xy: 2, 20
+  xy: 796, 28
   size: 400, 20
   orig: 400, 20
   offset: 0, 0
   index: -1
-remove_menu_item
-  rotate: false
-  xy: 1744, 90
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-result_image
-  rotate: false
-  xy: 844, 280
-  size: 640, 640
-  orig: 640, 640
-  offset: 0, 0
-  index: -1
 satiety_bar
   rotate: false
-  xy: 2, 166
+  xy: 2, 24
   size: 792, 24
   orig: 792, 24
   offset: 0, 0
   index: -1
 start_screen_exit_button
   rotate: false
-  xy: 792, 2
-  size: 256, 96
-  orig: 256, 96
-  offset: 0, 0
-  index: -1
-table
-  rotate: false
-  xy: 2, 554
-  size: 768, 768
-  orig: 768, 768
+  xy: 2634, 56
+  size: 512, 192
+  orig: 512, 192
   offset: 0, 0
   index: -1
 test4
   rotate: false
-  xy: 1888, 370
+  xy: 3846, 3966
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 test5
   rotate: false
-  xy: 662, 36
+  xy: 3846, 3836
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-
-happy_farm2.png
-size: 2048,1024
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-entity_type
-  rotate: false
-  xy: 2, 484
-  size: 640, 480
-  orig: 640, 480
-  offset: 0, 0
-  index: -1
-right_table_button
-  rotate: false
-  xy: 644, 708
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-second_entity
-  rotate: false
-  xy: 644, 450
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-shop_button
-  rotate: false
-  xy: 902, 708
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-stock_entity
-  rotate: false
-  xy: 2, 2
-  size: 640, 480
-  orig: 640, 480
-  offset: 0, 0
-  index: -1
-swap_button
-  rotate: false
-  xy: 644, 192
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-test1
-  rotate: false
-  xy: 902, 450
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-test2
-  rotate: false
-  xy: 1160, 708
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-test3
-  rotate: false
-  xy: 902, 192
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
 test_black
   rotate: false
-  xy: 644, 62
+  xy: 3846, 3706
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 test_white
   rotate: false
-  xy: 644, 62
+  xy: 3846, 3706
   size: 128, 128
   orig: 128, 128
+  offset: 0, 0
+  index: -1
+
+happy_farm2.png
+size: 4096,4096
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cell
+  rotate: false
+  xy: 2, 404
+  size: 1024, 1024
+  orig: 1024, 1024
+  offset: 0, 0
+  index: -1
+cell_menu
+  rotate: false
+  xy: 2, 1430
+  size: 1280, 960
+  orig: 1280, 960
+  offset: 0, 0
+  index: -1
+container
+  rotate: false
+  xy: 1028, 286
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+corn
+  rotate: false
+  xy: 2382, 2326
+  size: 640, 640
+  orig: 640, 640
+  offset: 0, 0
+  index: -1
+create_menu_item
+  rotate: false
+  xy: 3784, 3672
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+cucumber
+  rotate: false
+  xy: 3024, 2326
+  size: 640, 640
+  orig: 640, 640
+  offset: 0, 0
+  index: -1
+entity
+  rotate: false
+  xy: 1542, 542
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+exit_button
+  rotate: false
+  xy: 2, 2
+  size: 800, 400
+  orig: 800, 400
+  offset: 0, 0
+  index: -1
+feed_button
+  rotate: false
+  xy: 2086, 1090
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+first_entity
+  rotate: false
+  xy: 3784, 3414
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+heal_button
+  rotate: false
+  xy: 2600, 1170
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+left_table_button
+  rotate: false
+  xy: 3784, 3156
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+main_title
+  rotate: false
+  xy: 1540, 2246
+  size: 840, 720
+  orig: 840, 720
+  offset: 0, 0
+  index: -1
+menu_button
+  rotate: false
+  xy: 1284, 1202
+  size: 800, 400
+  orig: 800, 400
+  offset: 0, 0
+  index: -1
+onion
+  rotate: false
+  xy: 1284, 1604
+  size: 640, 640
+  orig: 640, 640
+  offset: 0, 0
+  index: -1
+peas
+  rotate: false
+  xy: 1926, 1604
+  size: 640, 640
+  orig: 640, 640
+  offset: 0, 0
+  index: -1
+remove_menu_item
+  rotate: false
+  xy: 1542, 284
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+result_image
+  rotate: false
+  xy: 2568, 1684
+  size: 640, 640
+  orig: 640, 640
+  offset: 0, 0
+  index: -1
+right_table_button
+  rotate: false
+  xy: 3628, 1426
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+second_entity
+  rotate: false
+  xy: 3628, 1168
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+shop_button
+  rotate: false
+  xy: 1028, 800
+  size: 800, 400
+  orig: 800, 400
+  offset: 0, 0
+  index: -1
+start_screen_image
+  rotate: false
+  xy: 2822, 2968
+  size: 960, 960
+  orig: 960, 960
+  offset: 0, 0
+  index: -1
+stock_entity
+  rotate: false
+  xy: 1540, 2968
+  size: 1280, 960
+  orig: 1280, 960
+  offset: 0, 0
+  index: -1
+swap_button
+  rotate: false
+  xy: 3114, 1170
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+table
+  rotate: false
+  xy: 2, 2392
+  size: 1536, 1536
+  orig: 1536, 1536
+  offset: 0, 0
+  index: -1
+test1
+  rotate: false
+  xy: 3784, 2898
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+test2
+  rotate: false
+  xy: 3666, 2640
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+test3
+  rotate: false
+  xy: 3666, 2382
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+tomato
+  rotate: false
+  xy: 3210, 1684
+  size: 640, 640
+  orig: 640, 640
   offset: 0, 0
   index: -1

@@ -94,7 +94,7 @@ public class Renderer {
     }
 
     private void initBackgroundColor() {
-        backgroundColor = Color.valueOf("B0BEC5FF");
+        backgroundColor = Color.valueOf("AED581FF");
     }
 
     private void initBatch(Batch batch) {

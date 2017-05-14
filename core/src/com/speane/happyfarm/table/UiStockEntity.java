@@ -6,7 +6,6 @@ public class UiStockEntity extends Widget {
 
     private static final float WIDTH = 240;
     private static final float HEIGHT = 320;
-    private static final String TEXTURE = "stock_entity";
 
     private UiImage image;
     private static final float IMAGE_WIDTH = WIDTH;
@@ -43,7 +42,7 @@ public class UiStockEntity extends Widget {
 
     @Override
     protected String getDefaultTextureName() {
-        return TEXTURE;
+        return null;
     }
 
     @Override
