@@ -31,13 +31,45 @@ grid: {
 		]
 		[
 			{
-				container: {}
+				container: {
+					entity: {
+						type: {
+							textureName: peas
+							readinessVelocity: 0.2
+							healthVelocity: 0.006
+							satietyVelocity: 0.004
+							price: 45
+						}
+						readiness: 0.17437628
+						health: 0.3382533
+						satiety: 0.86960465
+						healthVelocity: 0.042219184
+						readinessVelocity: 0.2
+						satietyVelocity: 0.004
+					}
+				}
 			}
 			{
 				container: {}
 			}
 			{
-				container: {}
+				container: {
+					entity: {
+						type: {
+							textureName: tomato
+							readinessVelocity: 0.15
+							healthVelocity: 0.005
+							satietyVelocity: 0.005
+							price: 30
+						}
+						readiness: 0.36933404
+						health: 0.8048748
+						satiety: 0.9027901
+						healthVelocity: 0.016005173
+						readinessVelocity: 0.15
+						satietyVelocity: 0.005
+					}
+				}
 			}
 			{
 				container: {}
@@ -45,13 +77,61 @@ grid: {
 		]
 		[
 			{
-				container: {}
+				container: {
+					entity: {
+						type: {
+							textureName: cucumber
+							readinessVelocity: 0.11
+							healthVelocity: 0.003
+							satietyVelocity: 0.004
+							price: 35
+						}
+						readiness: 1
+						health: 0.5099792
+						satiety: 0.90888864
+						healthVelocity: 0.030801285
+						readinessVelocity: 0.11
+						satietyVelocity: 0.004
+					}
+				}
 			}
 			{
-				container: {}
+				container: {
+					entity: {
+						type: {
+							textureName: carrot
+							readinessVelocity: 0.12
+							healthVelocity: 0.006
+							satietyVelocity: 0.007
+							price: 40
+						}
+						readiness: 0.7719433
+						health: 0.15609702
+						satiety: 0.75640196
+						healthVelocity: 0.048173774
+						readinessVelocity: 0.12
+						satietyVelocity: 0.007
+					}
+				}
 			}
 			{
-				container: {}
+				container: {
+					entity: {
+						type: {
+							textureName: peas
+							readinessVelocity: 0.2
+							healthVelocity: 0.006
+							satietyVelocity: 0.004
+							price: 45
+						}
+						readiness: 1
+						health: 0.96031183
+						satiety: 0.97792596
+						healthVelocity: 0.008352907
+						readinessVelocity: 0.2
+						satietyVelocity: 0.004
+					}
+				}
 			}
 			{
 				container: {}
@@ -60,25 +140,71 @@ grid: {
 	]
 }
 score: {
-	value: 2000
+	value: 1100
 }
 stock: [
 	{
 		type: {
-			textureName: first_entity
+			textureName: tomato
 			readinessVelocity: 0.15
-			healthVelocity: 0.03
-			satietyVelocity: 0.04
-			price: 156
+			healthVelocity: 0.005
+			satietyVelocity: 0.005
+			price: 30
 		}
 	}
 	{
 		type: {
-			textureName: second_entity
-			readinessVelocity: 0.5
-			healthVelocity: 0.5
-			satietyVelocity: 0.5
-			price: 452
+			textureName: cucumber
+			readinessVelocity: 0.11
+			healthVelocity: 0.003
+			satietyVelocity: 0.004
+			price: 35
+		}
+	}
+	{
+		type: {
+			textureName: carrot
+			readinessVelocity: 0.12
+			healthVelocity: 0.006
+			satietyVelocity: 0.007
+			price: 40
+		}
+	}
+	{
+		type: {
+			textureName: peas
+			readinessVelocity: 0.2
+			healthVelocity: 0.006
+			satietyVelocity: 0.004
+			price: 45
+		}
+		amount: 1
+	}
+	{
+		type: {
+			textureName: corn
+			readinessVelocity: 0.1
+			healthVelocity: 0.004
+			satietyVelocity: 0.006
+			price: 50
+		}
+	}
+	{
+		type: {
+			textureName: onion
+			readinessVelocity: 0.07
+			healthVelocity: 0.004
+			satietyVelocity: 0.008
+			price: 55
+		}
+	}
+	{
+		type: {
+			textureName: chicken
+			readinessVelocity: 0.1
+			healthVelocity: 0.001
+			satietyVelocity: 0.03
+			price: 60
 		}
 	}
 ]

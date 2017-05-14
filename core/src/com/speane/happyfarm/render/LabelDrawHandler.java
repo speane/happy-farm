@@ -1,7 +1,7 @@
 package com.speane.happyfarm.render;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.speane.happyfarm.table.UiLabel;
+import com.speane.happyfarm.ui.UiLabel;
 
 public class LabelDrawHandler implements DrawHandler<UiLabel> {
 

@@ -74,13 +74,6 @@ load_button
   orig: 512, 192
   offset: 0, 0
   index: -1
-main_screen_back_button
-  rotate: false
-  xy: 3148, 138
-  size: 256, 96
-  orig: 256, 96
-  offset: 0, 0
-  index: -1
 menu
   rotate: false
   xy: 2564, 250
@@ -144,30 +137,16 @@ start_screen_exit_button
   orig: 512, 192
   offset: 0, 0
   index: -1
-test4
+test_black
   rotate: false
   xy: 3846, 3966
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-test5
-  rotate: false
-  xy: 3846, 3836
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-test_black
-  rotate: false
-  xy: 3846, 3706
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
 test_white
   rotate: false
-  xy: 3846, 3706
+  xy: 3846, 3966
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
@@ -192,37 +171,44 @@ cell_menu
   orig: 1280, 960
   offset: 0, 0
   index: -1
+chicken
+  rotate: false
+  xy: 1540, 2326
+  size: 640, 640
+  orig: 640, 640
+  offset: 0, 0
+  index: -1
 container
   rotate: false
-  xy: 1028, 286
+  xy: 1670, 768
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 corn
   rotate: false
-  xy: 2382, 2326
+  xy: 2182, 2326
   size: 640, 640
   orig: 640, 640
   offset: 0, 0
   index: -1
 create_menu_item
   rotate: false
-  xy: 3784, 3672
+  xy: 2888, 1426
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 cucumber
   rotate: false
-  xy: 3024, 2326
+  xy: 2824, 2326
   size: 640, 640
   orig: 640, 640
   offset: 0, 0
   index: -1
 entity
   rotate: false
-  xy: 1542, 542
+  xy: 3784, 3672
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
@@ -236,7 +222,7 @@ exit_button
   index: -1
 feed_button
   rotate: false
-  xy: 2086, 1090
+  xy: 2184, 768
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
@@ -250,7 +236,7 @@ first_entity
   index: -1
 heal_button
   rotate: false
-  xy: 2600, 1170
+  xy: 3466, 2454
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
@@ -262,39 +248,25 @@ left_table_button
   orig: 256, 256
   offset: 0, 0
   index: -1
-main_title
-  rotate: false
-  xy: 1540, 2246
-  size: 840, 720
-  orig: 840, 720
-  offset: 0, 0
-  index: -1
 menu_button
   rotate: false
-  xy: 1284, 1202
+  xy: 1284, 1282
   size: 800, 400
   orig: 800, 400
   offset: 0, 0
   index: -1
 onion
   rotate: false
-  xy: 1284, 1604
+  xy: 1284, 1684
   size: 640, 640
   orig: 640, 640
   offset: 0, 0
   index: -1
 peas
   rotate: false
-  xy: 1926, 1604
+  xy: 1926, 1684
   size: 640, 640
   orig: 640, 640
-  offset: 0, 0
-  index: -1
-remove_menu_item
-  rotate: false
-  xy: 1542, 284
-  size: 256, 256
-  orig: 256, 256
   offset: 0, 0
   index: -1
 result_image
@@ -306,21 +278,21 @@ result_image
   index: -1
 right_table_button
   rotate: false
-  xy: 3628, 1426
+  xy: 1028, 382
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 second_entity
   rotate: false
-  xy: 3628, 1168
+  xy: 1286, 382
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 shop_button
   rotate: false
-  xy: 1028, 800
+  xy: 2086, 1282
   size: 800, 400
   orig: 800, 400
   offset: 0, 0
@@ -341,7 +313,7 @@ stock_entity
   index: -1
 swap_button
   rotate: false
-  xy: 3114, 1170
+  xy: 3210, 1812
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
@@ -353,30 +325,9 @@ table
   orig: 1536, 1536
   offset: 0, 0
   index: -1
-test1
-  rotate: false
-  xy: 3784, 2898
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-test2
-  rotate: false
-  xy: 3666, 2640
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-test3
-  rotate: false
-  xy: 3666, 2382
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
 tomato
   rotate: false
-  xy: 3210, 1684
+  xy: 1028, 640
   size: 640, 640
   orig: 640, 640
   offset: 0, 0

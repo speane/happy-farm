@@ -1,1 +1,15 @@
-{screenHeight:480,entityHealthVelocityEncrement:1.001}
+{
+  screenWidth:640,
+  screenHeight:640,
+  entityHealthVelocityIncrement:1.001,
+  textureAtlasName:happy_farm.atlas,
+  feedCost:10,
+  feedValue:0.3,
+  healCost:20,
+  healValue:0.4,
+  mainGridRowCount:4,
+  mainGridColumnCount:4,
+  initialScore:1000,
+  backgroundColorCode:AED581FF,
+  backgroundMusicFilename:background.mp3
+}

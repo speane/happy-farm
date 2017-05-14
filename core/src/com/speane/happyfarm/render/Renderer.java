@@ -4,11 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.speane.happyfarm.entity.TextureNameRepository;
-import com.speane.happyfarm.entity.TextureRepository;
-import com.speane.happyfarm.table.UiLabel;
-import com.speane.happyfarm.table.UiProgressBarInner;
-import com.speane.happyfarm.table.Widget;
+import com.speane.happyfarm.config.Config;
+import com.speane.happyfarm.ui.UiLabel;
+import com.speane.happyfarm.ui.UiProgressBarInner;
+import com.speane.happyfarm.ui.Widget;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,15 +16,9 @@ import java.util.Map;
 
 public class Renderer {
 
-    private TextureRepository textureRepository;
-    private TextureNameRepository textureNameRepository;
-
     private Batch batch;
-
     private Color backgroundColor;
-
     private List<Renderable> renderables;
-
     private Map<Class<? extends Widget>, DrawHandler> drawHandlers;
     private DefaultDrawHandler defaultDrawHandler;
 
@@ -34,14 +27,10 @@ public class Renderer {
         initBackgroundColor();
         initRenderables();
         initDrawHandlers();
-        initTextureRepository();
-        initTextureNameRepository();
         initDefaultDrawHandler();
     }
 
     public void render(Widget widget) {
-        if (widget instanceof UiLabel) {
-        }
         if (canBeDrawn(widget)) {
             getDrawHandler(widget.getClass()).draw(batch, widget);
         }
@@ -94,7 +83,7 @@ public class Renderer {
     }
 
     private void initBackgroundColor() {
-        backgroundColor = Color.valueOf("AED581FF");
+        backgroundColor = Color.valueOf(Config.INSTANCE.getBackgroundColorCode());
     }
 
     private void initBatch(Batch batch) {
@@ -105,18 +94,10 @@ public class Renderer {
         renderables = new ArrayList<Renderable>();
     }
 
-    private void initTextureRepository() {
-        textureRepository = new TextureRepository();
-    }
-
     private void initDrawHandlers() {
         drawHandlers = new HashMap<Class<? extends Widget>, DrawHandler>();
         drawHandlers.put(UiProgressBarInner.class, new ProgressBarDrawHandler());
         drawHandlers.put(UiLabel.class, new LabelDrawHandler());
-    }
-
-    private void initTextureNameRepository() {
-        textureNameRepository = new TextureNameRepository();
     }
 
     private void initDefaultDrawHandler() {
